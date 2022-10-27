@@ -6,8 +6,7 @@ export default class TestController extends Controller {
     const { id } = ctx.params;
     const { query, body } = ctx.request;
     // const res = await this.app.axiosInstance.get('/api/breeds/image/random');
-    const person = await ctx.service.testDB.showPlayers();
-
+    const person = await ctx.service.user.showPlayers();
     const resp = {
       query,
       id,

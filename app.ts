@@ -1,6 +1,6 @@
 import { IBoot, Application } from 'egg';
 import { createConnection } from 'mongoose';
-// import { join } from 'path';
+import { join } from 'path';
 import * as assert from 'assert';
 export default class AppBoot implements IBoot {
   private readonly app: Application;
@@ -35,15 +35,15 @@ export default class AppBoot implements IBoot {
     // this.app.config.coreMiddleware.unshift('myLogger')
   }
   async willReady() {
-    console.log('enable willready', this.app.config.coreMiddleware);
-    // const dir = join(this.app.config.baseDir, 'app/model')
-    // this.app.loader.loadToApp(dir, 'model', {
-    //   caseStyle: 'upper'
-    // })
-    // app/model/user.ts => app.model.User
+    // console.log('enable willready', this.app.config.coreMiddleware);
+    const dir = join(this.app.config.baseDir, 'app/model');
+    this.app.loader.loadToApp(dir, 'model', {
+      caseStyle: 'upper',
+    });
+    //app/model/user.ts => app.model.User
   }
   async didReady() {
-    console.log('middleware', this.app.middleware);
+    // console.log('middleware', this.app.middleware);
     const ctx = await this.app.createAnonymousContext();
     // const res = await ctx.service.test.sayHi('viking');
   }

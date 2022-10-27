@@ -9,11 +9,13 @@ type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? R
 import ExportDog from '../../../app/service/dog';
 import ExportTest from '../../../app/service/Test';
 import ExportTestDB from '../../../app/service/testDB';
+import ExportUser from '../../../app/service/user';
 
 declare module 'egg' {
   interface IService {
     dog: AutoInstanceType<typeof ExportDog>;
     test: AutoInstanceType<typeof ExportTest>;
     testDB: AutoInstanceType<typeof ExportTestDB>;
+    user: AutoInstanceType<typeof ExportUser>;
   }
 }
